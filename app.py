@@ -1,9 +1,9 @@
 # app.py（ホーム画面）
 import streamlit as st
 
-st.set_page_config(page_title="毎日1問！演習アプリ", layout="wide")
+st.set_page_config(page_title="大学院入試 演習アプリ", layout="wide")
 
-st.title("🎓 毎日1問！演習アプリ")
+st.title("🎓 大学院入試 演習アプリ")
 
 st.markdown("""
 このアプリでは以下の演習を行うことができます：
