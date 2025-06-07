@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "category": "multiple_integral",
+    "title": "累次積分による面積の計算",
+    "latex_expr": "\\int_{0}^{1} \\int_{0}^{x} xy \\,dy\\,dx",
+    "answer_expr": "\\frac{1}{8}",
+    "steps_jp": [
+      {
+        "explain": "内側の積分から実行します。",
+        "latex": "\\int_{0}^{x} xy \\,dy = x \\int_{0}^{x} y \\,dy = x \\cdot \\frac{x^2}{2} = \\frac{x^3}{2}"
+      },
+      {
+        "explain": "外側の積分を計算します。",
+        "latex": "\\int_{0}^{1} \\frac{x^3}{2} \\,dx = \\frac{1}{2} \\cdot \\frac{1}{4} = \\frac{1}{8}"
+      }
+    ],
+    "points": ["累次積分の順番に注意", "外積分と内積分の区別"],
+    "priority": 2
+  }
+]
