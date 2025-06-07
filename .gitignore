@@ -1,0 +1,10 @@
+# 仮想環境フォルダ
+venv/
+
+# Pythonキャッシュ
+__pycache__/
+*.pyc
+
+# JupyterやVSCodeの設定
+.ipynb_checkpoints/
+.vscode/
