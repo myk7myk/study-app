@@ -29,7 +29,7 @@
   {
     "id": 2,
     "category": "inverse",
-    "title": "Aの逆行列を求めよ（3×3）",
+    "title": "Aの逆行列を求めよ①（3×3）",
     "latex_expr": "A = \\begin{bmatrix}1 & 2 & 3 \\\\ 2 & 4 & 5 \\\\ 3 & 5 & 6\\end{bmatrix}",
     "answer_expr": "A^{-1} = \\begin{bmatrix} 1 & -3 & 2 \\\\ -3 & 3 & -1 \\\\ 2 & -1 & 0\\end{bmatrix}",
     "steps_jp": [
@@ -57,7 +57,7 @@
   {
     "id": 3,
     "category": "inverse",
-    "title": "Aの逆行列を求めよ（3×3）",
+    "title": "Aの逆行列を求めよ②（3×3）",
     "latex_expr": "A = \\begin{bmatrix}3 & 6 & -5 \\\\ 1 & 2 & -2 \\\\ -2 & -3 & 2\\end{bmatrix}",
     "answer_expr": "A^{-1} = \\begin{bmatrix}-2 & 3 & -2 \\\\ 2 & -4 & 1 \\\\ 1 & -3 & 0\\end{bmatrix}",
     "steps_jp": [

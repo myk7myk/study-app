@@ -30,10 +30,9 @@ sorted_problems = sorted(
     key=lambda p: (p.get("priority", 0), -p["id"]),
     reverse=True
 )
-names = [f"{p['id']}: {p['title']} " + "★" * p.get("priority", 0) for p in sorted_problems]
-sel = st.selectbox("問題を選択：", names, index=0)
-sel_id = int(sel.split(":")[0])
-q = next(p for p in filtered if p["id"] == sel_id)
+names = [f"{p['title']} " + "★" * p.get("priority", 0) for p in sorted_problems]
+sel_title = st.selectbox("問題を選択：", names, index=0)
+q = next(p for p in filtered if f"{p['title']} " + "★" * p.get("priority", 0) == sel_title)
 
 # ---------- 出題 ----------
 st.title("📘 線形代数 演習問題")
