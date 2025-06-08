@@ -2,6 +2,8 @@
   {
     "id": 1,
     "title": "両側指数関数",
+    "category": "fourier",
+    "sub_category": "定義に従ってフーリエ変換",
     "latex_expr": "f(t) = e^{-|t|}",
     "answer_expr": "\\displaystyle \\frac{2}{1+\\omega^{2}}",
     "steps_jp": [
@@ -47,6 +49,8 @@
   {
     "id": 2,
     "title": "片側指数関数",
+    "sub_category": "定義に従ってフーリエ変換",
+    "category": "fourier",
     "latex_expr": "f(t)=e^{-t}\\,u(t)",
     "answer_expr": "\\displaystyle \\frac{1}{1 + i\\omega}",
     "steps_jp": [
@@ -76,6 +80,8 @@
   {
     "id": 3,
     "title": "矩形波",
+    "category": "fourier",
+    "sub_category": "定義に従ってフーリエ変換",
     "latex_expr": "f(t)=\\begin{cases}1 & |t|\\le1\\\\0&\\text{otherwise}\\end{cases}",
     "answer_expr": "2\\,\\mathrm{sinc}(\\omega)",
     "steps_jp": [
@@ -110,7 +116,9 @@
 
   {
     "id": 4,
-    "title": "中心のずれた矩形波(時間シフトの利用)",
+    "title": "中心のずれた矩形波",
+    "category": "fourier",
+    "sub_category": "時間シフトのフーリエ変換",
     "latex_expr": "f(t) = \\begin{cases} 1 & \\text{if } |t| \\le 1 \\\\ 0 & \\text{otherwise} \\end{cases}",
     "answer_expr": "2\\,\\mathrm{sinc}(\\omega) e^{-i\\omega}",
     "steps_jp": [
@@ -140,6 +148,8 @@
   {
     "id": 5,
     "title": "三角波",
+    "category": "fourier",
+    "sub_category": "定義に従ってフーリエ変換",
     "latex_expr": "f(t)=\\begin{cases}1-|t| & |t|\\le1\\\\0&\\text{otherwise}\\end{cases}",
     "answer_expr": "\\mathrm{sinc}^{2}\\!\\left(\\frac{\\omega}{2}\\right)",
     "steps_jp": [
@@ -193,6 +203,8 @@
   {
     "id": 6,
     "title": "デルタ関数(暗記必須)",
+    "category": "fourier",
+    "sub_category": "暗記必須のフーリエ変換",
     "latex_expr": "f(t)=\\delta(t)",
     "answer_expr": "1",
     "steps_jp": [
@@ -213,6 +225,8 @@
   {
     "id": 7,
     "title": "定数関数(暗記必須)",
+    "category": "fourier",
+    "sub_category": "暗記必須のフーリエ変換",
     "latex_expr": "f(t)=1",
     "answer_expr": "2\\pi\\,\\delta(\\omega)",
     "steps_jp": [
@@ -229,7 +243,9 @@
 
   {
     "id": 8,
-    "title": "コサイン関数(周波数シフトの利用)",
+    "title": "コサイン関数",
+    "category": "fourier",
+    "sub_category": "周波数シフトのフーリエ変換",
     "latex_expr": "f(t)=\\cos(\\omega_{0} t)",
     "answer_expr": "\\pi\\bigl[\\delta(\\omega - \\omega_{0}) + \\delta(\\omega + \\omega_{0})\\bigr]",
     "steps_jp": [
@@ -264,7 +280,9 @@
 
   {
     "id": 9,
-    "title": "サイン関数(周波数シフトの利用)",
+    "title": "サイン関数",
+    "category": "fourier",
+    "sub_category": "周波数シフトのフーリエ変換",
     "latex_expr": "f(t)=\\sin(\\omega_{0} t)",
     "answer_expr": "\\pi\\bigl[\\delta(\\omega - \\omega_{0}) - \\delta(\\omega + \\omega_{0})\\bigr] \\cdot i",
     "steps_jp": [
@@ -300,6 +318,8 @@
   {
     "id": 10,
     "title": "対称ランプ関数（中心原点）",
+    "category": "fourier",
+    "sub_category": "定義に従ってフーリエ変換",
     "latex_expr": "f(t)=\\begin{cases} t & |t|<1 \\\\ 0 & \\text{otherwise} \\end{cases}",
     "answer_expr": "2 i\\,\\frac{\\omega\\cos\\omega-\\sin\\omega}{\\omega^{2}}",
     "steps_jp": [
@@ -337,6 +357,8 @@
   {
     "id": 11,
     "title": "片側ランプ関数（0↔1 区間）",
+    "category": "fourier",
+    "sub_category": "定義に従ってフーリエ変換",
     "latex_expr": "g(t)=\\begin{cases} t & 0 \\le t < 1 \\\\ 0 & \\text{otherwise} \\end{cases}",
     "answer_expr": "\\frac{\\sin\\omega}{\\omega}+\\frac{1-\\cos\\omega}{\\omega^{2}}\\; +\\; i\\!\\left(\\frac{\\cos\\omega}{\\omega}+\\frac{\\sin\\omega}{\\omega^{2}}\\right)",
     "steps_jp": [
@@ -382,6 +404,7 @@
   {
     "id": 12,
     "title": "ガウス関数",
+    "category": "fourier",
     "latex_expr": "f(t)=e^{-\\pi t^{2}}",
     "answer_expr": "e^{-\\pi \\omega^{2}}",
     "steps_jp": [
@@ -415,6 +438,7 @@
   {
     "id": 13,
     "title": "ランプ関数",
+    "category": "fourier",
     "latex_expr": "f(t)=t\\,u(t)",
     "answer_expr": "\\displaystyle \\frac{1}{(j\\omega)^{2}} + \\pi t\\,\\delta(\\omega)",
     "steps_jp": [
@@ -444,6 +468,7 @@
   {
     "id": 14,
     "title": "sinc 関数",
+    "category": "fourier",
     "latex_expr": "f(t)=\\mathrm{sinc}(t)=\\frac{\\sin(\\pi t)}{\\pi t}",
     "answer_expr": "\\displaystyle \\mathrm{rect}\\!\\left(\\frac{\\omega}{2\\pi}\\right)",
     "steps_jp": [
@@ -473,6 +498,7 @@
   {
     "id": 15,
     "title": "周期矩形波 (50% Duty, 周期 2π)",
+    "category": "fourier",
     "latex_expr": "f(t)=\\mathrm{sgn}(\\sin t)",
     "answer_expr": "\\displaystyle \\frac{4}{\\omega} \\sum_{\\substack{k=-\\infty \\\\ k\\text{ odd}}}^{\\infty} \\delta(\\omega - k)",
     "steps_jp": [
@@ -502,6 +528,7 @@
   {
     "id": 16,
     "title": "鋸波 (周期 2π)",
+    "category": "fourier",
     "latex_expr": "f(t)=\\dfrac{t}{\\pi}\\quad(-\\pi<t<\\pi),\\quad\\text{周期延長}",
     "answer_expr": "\\displaystyle 2j \\sum_{k\\neq0} \\frac{(-1)^{k}}{k} \\delta(\\omega - k)",
     "steps_jp": [
@@ -539,6 +566,7 @@
   {
     "id": 17,
     "title": "単位ステップ関数",
+    "category": "fourier",
     "latex_expr": "f(t)=u(t)",
     "answer_expr": "\\pi\\,\\delta(\\omega) + \\frac{1}{j\\omega}",
     "steps_jp": [
@@ -572,6 +600,7 @@
   {
     "id": 18,
     "title": "符号関数",
+    "category": "fourier",
     "latex_expr": "f(t)=\\operatorname{sgn}(t)=\\begin{cases}1 & t>0\\\\-1 & t<0\\end{cases}",
     "answer_expr": "\\displaystyle \\frac{2}{j\\omega}",
     "steps_jp": [

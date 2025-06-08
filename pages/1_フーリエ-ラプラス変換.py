@@ -85,6 +85,20 @@ def plot_rect_shift():
     x = np.linspace(-4, 4, 1000)
     _plot_basic(x, np.where(np.abs(x - 1) <= 1, 1, 0), ylim=(-0.2, 1.2))
 
+def plot_sin():
+    x = np.linspace(-4, 4, 1000)
+    _plot_basic(x, np.sin(2 * np.pi * x))
+
+def plot_sym_ramp():
+    x = np.linspace(-4, 4, 1000)
+    y = np.where(np.abs(x) < 1, x, 0)
+    _plot_basic(x, y, ylim=(-1.5, 1.5))
+
+def plot_ramp_0_1():
+    x = np.linspace(-4, 4, 1000)
+    y = np.where((x >= 0) & (x <= 1), x, 0)
+    _plot_basic(x, y, ylim=(-0.2, 1.2))
+
 plot_functions = {
     "exp": plot_exp,
     "rect": plot_rect,
@@ -101,24 +115,56 @@ plot_functions = {
     "sq_per": plot_sq_per,
     "saw": plot_saw,
     "rect_shift": plot_rect_shift,
+    "sin": plot_sin,
+    "sym_ramp": plot_sym_ramp,
+    "ramp_0_1": plot_ramp_0_1,
 }
 
 # ---------- データ読み込み ----------
 with open("data/fourier_problems.json", "r", encoding="utf-8") as f:
     problems = json.load(f)
 
+# ---------- 変換タイプ選択 ----------
+category_names = {
+    "fourier": "フーリエ変換",
+    "laplace": "ラプラス変換"
+}
+selected_category_key = st.selectbox("変換の種類：", list(category_names.keys()), format_func=lambda k: category_names[k])
+
+# ---------- サブカテゴリ選択 ----------
+filtered_problems = [p for p in problems if p.get("category") == selected_category_key]
+
+if selected_category_key == "fourier":
+    sub_categories = [
+        "暗記必須のフーリエ変換",
+        "定義に従ってフーリエ変換",
+        "時間シフトのフーリエ変換",
+        "周波数シフトのフーリエ変換",
+        "パーセバルの定理"
+    ]
+elif selected_category_key == "laplace":
+    sub_categories = ["ダミーサブカテゴリ"]
+else:
+    sub_categories = []
+
+selected_sub = st.selectbox("サブカテゴリ：", sub_categories)
+filtered_problems = [p for p in filtered_problems if p.get("sub_category") == selected_sub]
+
+if not filtered_problems:
+    st.warning("このサブカテゴリにはまだ問題が登録されていません。")
+    st.stop()
+
 # ---------- 優先順選択モード ----------
-st.title("📘 フーリエ変換 演習問題")
+st.title(f"📘 {category_names[selected_category_key]} - {selected_sub} 演習問題")
 
 sorted_problems = sorted(
-    problems,
+    filtered_problems,
     key=lambda p: (p.get("priority", 0), -p["id"]),
     reverse=True
 )
-names = [f"{p['id']}: {p['title']} " + "★" * p.get("priority", 0) for p in sorted_problems]
-sel = st.selectbox("問題を選択：", names, index=0)
-sel_id = int(sel.split(":")[0])
-q = next(p for p in problems if p["id"] == sel_id)
+names = [f"{p['title']} " + "★" * p.get("priority", 0) for p in sorted_problems]
+sel_title = st.selectbox("問題を選択：", names, index=0)
+q = next(p for p in filtered_problems if f"{p['title']} " + "★" * p.get("priority", 0) == sel_title)
 
 # ---------- 出題表示 ----------
 star_str = " " + "★" * q.get("priority", 0) if q.get("priority", 0) > 0 else ""
@@ -131,7 +177,7 @@ if ptype in plot_functions:
 else:
     st.warning(f"グラフ関数が未定義 (plot_type = {ptype})")
 
-# ---------- 解答表示 ----------
+# ---------- 解答 ----------
 with st.expander("💡 解答 / 解説"):
     st.markdown("#### ✅ 結論")
     st.latex(q["answer_expr"])
