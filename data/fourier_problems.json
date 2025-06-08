@@ -433,5 +433,69 @@
     "comment": "## ポイント解説\n- 基本形 $e^{-\\alpha t} u(t)$ のフーリエ変換公式を出発点にする。\n- 時間シフトがある場合は、複素位相因子 $e^{-i\\omega t_0}$ を掛けるだけでよい。\n- $\\alpha > 0$ により収束条件は満たされる。",
     "plot_type": "expo_shift",
     "priority": 3
+  },
+  {
+    "id": 13,
+    "title": "時間シフトした三角波のフーリエ変換",
+    "category": "fourier",
+    "sub_category": "時間シフトのフーリエ変換",
+    "latex_expr": "g(t)=f(t+2)+f(t-2),\\;\\;f(t)=\\begin{cases}1-|t|,& |t|\\le1\\\\0,&|t|>1\\end{cases}",
+    "answer_expr": "\\displaystyle G(\\omega)=2\\,\\mathrm{sinc}^2\\left(\\frac{\\omega}{2}\\right)\\cos(2\\omega)",
+    "steps_jp": [
+      {
+        "explain": "時間シフト性 $\\; f(t-t_0) \\;\\longleftrightarrow\\; F(\\omega) e^{-jt_0\\omega}$を用いる。",
+        "latex": "G(\\omega)=F(\\omega)\\,e^{j2\\omega}+F(\\omega)\\,e^{-j2\\omega}"
+      },
+      {
+        "explain": "三角パルス$f(t)$のフーリエ変換は$F(\\omega)=sinc^2\\left(\\frac{\\omega}{2}\\right)$。これを代入する。",
+        "latex": "G(\\omega)=sinc^2\\left(\\frac{\\omega}{2}\\right)e^{j2\\omega}+sinc^2\\left(\\frac{\\omega}{2}\\right)e^{-j2\\omega}"
+      },
+      {
+        "explain": "$sinc^2\\left(\\frac{\\omega}{2}\\right)$でくくる",
+        "latex": "G(\\omega)=sinc^2\\left(\\frac{\\omega}{2}\\right)\\left(e^{j2\\omega}+e^{-j2\\omega}\\right)"
+      }
+      ,
+      {
+        "explain": "ここでオイラーの公式より$e^{j2\\omega}+e^{-j2\\omega}=2\\cos(2\\omega)$ を利用して整理する。",
+        "latex": "G(\\omega)=2sinc^2\\left(\\frac{\\omega}{2}\\right)\\cos(2\\omega)"
+      }
+    ],
+    "comment": "時間シフトの公式を覚えていることで楽々計算！三角波のフーリエ変換は練習しておこう。",
+    "points": [
+      "時間シフト性： $f(t-t_0) \\longleftrightarrow F(\\omega) e^{-jt_0\\omega}$",
+      "三角パルスのフーリエ変換は $sinc^2(\\omega/2)$",
+      "オイラーの公式 $e^{j\\theta} + e^{-j\\theta} = 2\\cos(\\theta)$ を利用して整理"
+    ],
+    "plot_type": "tri_shift2",
+    "priority": 2
+  },
+  {
+    "id": 14,
+    "title": "パーセバル：|G(ω)|^{2} の積分",
+    "category": "fourier",
+    "sub_category": "パーセバルの定理",
+    "latex_expr": "g(t)=f(t+2)+f(t-2)",
+    "answer_expr": "\\displaystyle \\int_{-\\infty}^{\\infty}|G(\\omega)|^{2}\\,d\\omega = \\frac{8\\pi}{3}",
+    "steps_jp": [
+      {
+        "explain": "(1) で求めた G(ω) を直接積分するのは大変なので、パーセバルの定理を使う。",
+        "latex": "\\int_{-\\infty}^{\\infty}|G(\\omega)|^{2}\\,d\\omega = 2\\pi\\,\\int_{-\\infty}^{\\infty}|g(t)|^{2}\\,dt"
+      },
+      {
+        "explain": "g(t) は ±2 シフトした三角パルスが重ならずに並ぶだけ ⇒ エネルギーは 2 倍。",
+        "latex": "E_g = 2E_f,\\;\\;E_f = \\int_{-1}^{1}(1-|t|)^{2}\\,dt = \\frac{2}{3}"
+      },
+      {
+        "explain": "したがって",
+        "latex": "\\int_{-\\infty}^{\\infty}|G(\\omega)|^{2}\\,d\\omega = 2\\pi\\,\\frac{4}{3} = \\frac{8\\pi}{3}"
+      }
+    ],
+    "comment": "時間域でエネルギーを数えてから 2π を掛けるのが定石。",
+    "points": [
+      "パーセバル：時間域 ↔ 周波数域のエネルギー保存",
+      "パルスが重ならない→エネルギーは単純加算"
+    ],
+    "plot_type": "tri_shift2",
+    "priority": 2
   }
 ]

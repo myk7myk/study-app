@@ -106,6 +106,19 @@ def plot_exp_shifted():
     y = np.exp(-alpha * (x - t0)) * (x >= t0)
     _plot_basic(x, y, ylim=(-0.2, 1.2))
 
+# ----- g(t) = f(t+2) + f(t-2) の描画 -----
+def plot_tri_shift2():
+    """
+    g(t) = f(t+2) + f(t-2)
+    ここで f(t) = max(1 - |t|, 0)  (三角パルス, 幅 2, 高さ 1)
+    シフト位置を ±2 に固定して 2 本重ねる
+    """
+    x = np.linspace(-6, 6, 1200)           # 少し広めに描画
+    f_left  = np.clip(1 - np.abs(x + 2), 0, 1)   # f(t+2)
+    f_right = np.clip(1 - np.abs(x - 2), 0, 1)   # f(t-2)
+    y = f_left + f_right
+    _plot_basic(x, y, ylim=(-0.2, 1.2))
+
 plot_functions = {
     "exp": plot_exp,
     "rect": plot_rect,
@@ -125,7 +138,8 @@ plot_functions = {
     "sin": plot_sin,
     "sym_ramp": plot_sym_ramp,
     "ramp_0_1": plot_ramp_0_1,
-    "expo_shift": plot_exp_shifted
+    "expo_shift": plot_exp_shifted,
+    "tri_shift2": plot_tri_shift2
 }
 
 # ---------- データ読み込み ----------
