@@ -98,6 +98,13 @@ def plot_ramp_0_1():
     x = np.linspace(-4, 4, 1000)
     y = np.where((x >= 0) & (x <= 1), x, 0)
     _plot_basic(x, y, ylim=(-0.2, 1.2))
+    
+def plot_exp_shifted():
+    x = np.linspace(-4, 4, 1000)
+    alpha = 1
+    t0 = 1
+    y = np.exp(-alpha * (x - t0)) * (x >= t0)
+    _plot_basic(x, y, ylim=(-0.2, 1.2))
 
 plot_functions = {
     "exp": plot_exp,
@@ -118,6 +125,7 @@ plot_functions = {
     "sin": plot_sin,
     "sym_ramp": plot_sym_ramp,
     "ramp_0_1": plot_ramp_0_1,
+    "expo_shift": plot_exp_shifted
 }
 
 # ---------- データ読み込み ----------

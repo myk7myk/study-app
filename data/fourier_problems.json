@@ -399,5 +399,39 @@
     ],
     "plot_type": "ramp_0_1",
     "priority": 3
+  },
+  {
+    "id": 12,
+    "title": "時間がシフトした片側指数関数のフーリエ変換",
+    "category": "fourier",
+    "sub_category": "時間シフトのフーリエ変換",
+    "latex_expr": "x(t) = e^{-\\alpha(t - t_0)} u(t - t_0)",
+    "answer_expr": "X(\\omega) = \\frac{e^{-i\\omega t_0}}{\\alpha + i\\omega}",
+    "steps_jp": [
+      {
+        "explain": "まず $e^{-\\alpha t} u(t)$ のフーリエ変換は既知の公式により以下の通り：",
+        "latex": "\\mathcal{F}\\{ e^{-\\alpha t} u(t) \\} = \\frac{1}{\\alpha + i\\omega}"
+      },
+      {
+        "explain": "与えられた関数は $x(t) = e^{-\\alpha(t - t_0)} u(t - t_0)$ で、これは $e^{-\\alpha t} u(t)$ を $t_0$ だけ右にシフトしたものと考えられる。",
+        "latex": "x(t) = e^{-\\alpha(t - t_0)} u(t - t_0) = g(t - t_0),\\quad g(t) = e^{-\\alpha t} u(t)"
+      },
+      {
+        "explain": "時間シフト性より、フーリエ変換に位相項 $e^{-i\\omega t_0}$ が掛かる。",
+        "latex": "\\mathcal{F}\\{ x(t) \\} = \\mathcal{F}\\{ g(t - t_0) \\} = G(\\omega) e^{-i\\omega t_0}"
+      },
+      {
+        "explain": "したがって、",
+        "latex": "X(\\omega) = \\frac{e^{-i\\omega t_0}}{\\alpha + i\\omega}"
+      }
+    ],
+    "points": [
+      "$e^{-\\alpha t} u(t)$ のフーリエ変換公式：$\\frac{1}{\\alpha + i\\omega}$ を覚えておく",
+      "時間シフトされた関数は、フーリエ変換に位相因子 $e^{-i\\omega t_0}$ がかかる",
+      "ステップ関数 $u(t - t_0)$ により積分区間が $[t_0, \\infty)$ に制限されている"
+    ],
+    "comment": "## ポイント解説\n- 基本形 $e^{-\\alpha t} u(t)$ のフーリエ変換公式を出発点にする。\n- 時間シフトがある場合は、複素位相因子 $e^{-i\\omega t_0}$ を掛けるだけでよい。\n- $\\alpha > 0$ により収束条件は満たされる。",
+    "plot_type": "expo_shift",
+    "priority": 3
   }
 ]
