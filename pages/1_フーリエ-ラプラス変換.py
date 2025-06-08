@@ -140,10 +140,17 @@ if selected_category_key == "fourier":
         "定義に従ってフーリエ変換",
         "時間シフトのフーリエ変換",
         "周波数シフトのフーリエ変換",
+        "フーリエ逆変換",
         "パーセバルの定理"
     ]
 elif selected_category_key == "laplace":
-    sub_categories = ["ダミーサブカテゴリ"]
+    sub_categories = [
+        "暗記必須のラプラス変換",
+        "sをシフトさせるラプラス変換",
+        "時間シフトのラプラス変換",
+        "暗記必須のラプラス逆変換",
+        "部分分数分解を含むラプラス逆変換",
+        ]
 else:
     sub_categories = []
 
