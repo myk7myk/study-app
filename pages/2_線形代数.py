@@ -9,7 +9,7 @@ with open("data/linear_algebra_problems.json", "r", encoding="utf-8") as f:
 # ---------- テーマ分類 ----------
 category_names = {
     "inverse": "逆行列を求める問題",
-    "determinant": "行列式の値を求める問題",
+    "determinant": "連立方程式を解く問題",
     "eigen": "固有値や固有ベクトルを求める問題",
     "diagonalize": "行列を対角化する問題",
     "power": "行列のn乗を求める問題"
