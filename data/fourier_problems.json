@@ -453,8 +453,7 @@
       {
         "explain": "$sinc^2\\left(\\frac{\\omega}{2}\\right)$でくくる",
         "latex": "G(\\omega)=sinc^2\\left(\\frac{\\omega}{2}\\right)\\left(e^{j2\\omega}+e^{-j2\\omega}\\right)"
-      }
-      ,
+      },
       {
         "explain": "ここでオイラーの公式より$e^{j2\\omega}+e^{-j2\\omega}=2\\cos(2\\omega)$ を利用して整理する。",
         "latex": "G(\\omega)=2sinc^2\\left(\\frac{\\omega}{2}\\right)\\cos(2\\omega)"
@@ -467,35 +466,55 @@
       "オイラーの公式 $e^{j\\theta} + e^{-j\\theta} = 2\\cos(\\theta)$ を利用して整理"
     ],
     "plot_type": "tri_shift2",
-    "priority": 2
+    "priority": 3
   },
   {
     "id": 14,
-    "title": "パーセバル：|G(ω)|^{2} の積分",
+    "title": "エネルギーを求める問題",
     "category": "fourier",
     "sub_category": "パーセバルの定理",
-    "latex_expr": "g(t)=f(t+2)+f(t-2)",
+    "latex_expr": "f(t)=\\begin{cases}1-|t|,&|t|\\le1\\\\0,&|t|>1\\end{cases},\\; g(t)=f(t+2)+f(t-2)\\text{ のとき}\\\\\n \\displaystyle\\int_{-\\infty}^{\\infty}|G(\\omega)|^{2}\\,d\\omega.\\text{ を求めよ}",
     "answer_expr": "\\displaystyle \\int_{-\\infty}^{\\infty}|G(\\omega)|^{2}\\,d\\omega = \\frac{8\\pi}{3}",
     "steps_jp": [
       {
-        "explain": "(1) で求めた G(ω) を直接積分するのは大変なので、パーセバルの定理を使う。",
-        "latex": "\\int_{-\\infty}^{\\infty}|G(\\omega)|^{2}\\,d\\omega = 2\\pi\\,\\int_{-\\infty}^{\\infty}|g(t)|^{2}\\,dt"
+        "explain": "フーリエ変換の定義に従い、$G(\\omega)$ を求めます。時間シフト性を利用して $f(t+2)$ と $f(t-2)$ のフーリエ変換を計算します。",
+        "latex": "\\displaystyle G(\\omega) = F(\\omega) e^{j2\\omega} + F(\\omega) e^{-j2\\omega}"
       },
       {
-        "explain": "g(t) は ±2 シフトした三角パルスが重ならずに並ぶだけ ⇒ エネルギーは 2 倍。",
-        "latex": "E_g = 2E_f,\\;\\;E_f = \\int_{-1}^{1}(1-|t|)^{2}\\,dt = \\frac{2}{3}"
+        "explain": "三角パルス $f(t)$ のフーリエ変換は $F(\\omega) = \\mathrm{sinc}^2(\\frac{\\omega}{2})$ です。これを代入します。",
+        "latex": "\\displaystyle G(\\omega) = \\mathrm{sinc}^2\\left(\\frac{\\omega}{2}\\right) (e^{j2\\omega} + e^{-j2\\omega})"
       },
       {
-        "explain": "したがって",
-        "latex": "\\int_{-\\infty}^{\\infty}|G(\\omega)|^{2}\\,d\\omega = 2\\pi\\,\\frac{4}{3} = \\frac{8\\pi}{3}"
+        "explain": "オイラーの公式を使って、$e^{j2\\omega} + e^{-j2\\omega} = 2 \\cos(2\\omega)$ に変形します。",
+        "latex": "\\displaystyle G(\\omega) = 2 \\mathrm{sinc}^2\\left(\\frac{\\omega}{2}\\right) \\cos(2\\omega)"
+      },
+      {
+        "explain": "次にエネルギーを求めるため積分をしたいですが$\\int_{-\\infty}^{\\infty}|G(\\omega)|^{2}\\,d\\omega$を計算するのは難しいので、パーセバルの定理を利用して周波数領域から時間領域の計算に持ち込みます。",
+        "latex": "\\displaystyle \\int_{-\\infty}^{\\infty} |G(\\omega)|^2 \\, d\\omega = 2\\pi\\int_{-\\infty}^{\\infty} |g(t)|^2 \\, dt"
+      },
+      {
+        "explain": "これでも$\\int_{-\\infty}^{\\infty} |g(t)|^2$の計算が難しいです。ここで$g(t)$は$f(t)$の三角波が2つずれて存在するものなので、$g(t)$のエネルギーは$f(t)$のエネルギーの2倍になります。",
+        "latex": "\\displaystyle \\int_{-\\infty}^{\\infty} |g(t)|^2 \\, dt = 2 \\int_{-\\infty}^{\\infty} |f(t)|^2 \\, dt"
+      },
+      {
+        "explain": "三角パルス $f(t)$ のエネルギーは $\\int_{-1}^{1} (1 - |t|)^2 \\, dt$ で計算できます。これを計算すると、$\\frac{2}{3}$ になります。",
+        "latex": "\\displaystyle \\int_{-1}^{1} (1 - |t|)^2 \\, dt = \\frac{2}{3}"
+      },
+      {
+        "explain": "したがって、$g(t)$ のエネルギーは $2 \\cdot \\frac{2}{3} = \\frac{4}{3}$ です。",
+        "latex": "\\displaystyle \\int_{-\\infty}^{\\infty} |g(t)|^2 \\, dt = 2 \\cdot \\frac{2}{3} = \\frac{4}{3}"
+      },
+      {
+        "explain": "最後に、パーセバルの定理により、$\\int_{-\\infty}^{\\infty} |g(t)|^2 \\, d\\omega$を$2\\pi$倍します。",
+        "latex": "\\displaystyle \\int_{-\\infty}^{\\infty} |G(\\omega)|^2 \\, d\\omega = 2\\pi\\cdot\\frac{4}{3} = \\frac{8\\pi}{3}"
       }
     ],
-    "comment": "時間域でエネルギーを数えてから 2π を掛けるのが定石。",
+    "comment": "## ポイント解説\n- **パーセバルの定理**を利用して、時間領域のエネルギーを周波数領域に変換。\n- 三角パルスのフーリエ変換は $\\mathrm{sinc}^2(\\frac{\\omega}{2})$ であることを覚える。\n- エネルギー計算では、三角波の重なりを考慮してエネルギーを2倍にする。",
     "points": [
       "パーセバル：時間域 ↔ 周波数域のエネルギー保存",
       "パルスが重ならない→エネルギーは単純加算"
     ],
     "plot_type": "tri_shift2",
-    "priority": 2
+    "priority": 3
   }
 ]
