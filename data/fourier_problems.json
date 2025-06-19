@@ -236,7 +236,7 @@
       }
     ],
     "comment": "## ポイント解説\n- $\\int_{-\\infty}^{\\infty} e^{-i\\omega t} dt = 2\\pi\\delta(\\omega)$ という基本公式を覚えておく。\n- 定数関数は周波数領域で「$\\omega = 0$ の直流成分のみ」を持つという直感を押さえる。",
-    "points": ["$基本公式であり暗記必須"],
+    "points": ["基本公式であり暗記必須"],
     "plot_type": "const",
     "priority": 3
   },

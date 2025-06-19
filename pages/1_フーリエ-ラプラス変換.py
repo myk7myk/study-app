@@ -147,14 +147,24 @@ with open("data/fourier_problems.json", "r", encoding="utf-8") as f:
     problems = json.load(f)
 
 # ---------- 変換タイプ選択 ----------
-category_names = {
-    "fourier": "フーリエ変換",
-    "laplace": "ラプラス変換"
+selected_category = st.selectbox(
+    "変換の種類:",
+    ["フーリエ変換", "ラプラス変換"],
+)
+
+label_to_key = {
+    "フーリエ変換": "fourier",
+    "ラプラス変換": "laplace"
 }
-selected_category_key = st.selectbox("変換の種類：", list(category_names.keys()), format_func=lambda k: category_names[k])
+
+selected_category_key = label_to_key[selected_category]
 
 # ---------- サブカテゴリ選択 ----------
-filtered_problems = [p for p in problems if p.get("category") == selected_category_key]
+filtered_problems = []
+
+for p in problems:
+    if p.get("category") == selected_category_key:
+        filtered_problems.append(p)
 
 if selected_category_key == "fourier":
     sub_categories = [
@@ -184,7 +194,7 @@ if not filtered_problems:
     st.stop()
 
 # ---------- 優先順選択モード ----------
-st.title(f"📘 {category_names[selected_category_key]} - {selected_sub} 演習問題")
+st.title(f"📘 {selected_category} - {selected_sub} 演習問題")
 
 sorted_problems = sorted(
     filtered_problems,
@@ -212,9 +222,15 @@ with st.expander("💡 解答 / 解説"):
     st.latex(q["answer_expr"])
 
     st.markdown("#### 🧠 導出ステップ")
+
     for step in q["steps_jp"]:
         st.markdown(step["explain"], unsafe_allow_html=False)
-        st.latex(step["latex"])
+
+        # LaTeX を $$ で囲んで、Markdownとして表示する（改行つけると綺麗）
+        st.markdown(f"$$\n{step['latex']}\n$$")
+
+
+
 
     st.markdown("#### 📌 ポイント")
     for pt in q["points"]:
